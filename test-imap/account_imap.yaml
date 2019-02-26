@@ -1,0 +1,12 @@
+account:
+   title: imap_test
+   provider: ''
+   active: true
+   settings:
+   services:
+     - imap:
+         host: "imap.fastmail.com"
+         username: "test2@fastmail.de"
+         password: "h6wgvfd4us38qrm8"
+         port: '993'
+         ssl: 'True'
