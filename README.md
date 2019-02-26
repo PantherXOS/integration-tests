@@ -3,7 +3,7 @@
 This repository contains a series of integration tests, for PantherX Applications. 
 
 ## Available Tests:
-- Test IMAP related services. 
+- Test IMAP related services. [decision](https://git.pantherx.org/development/applications/px-accounts-service/issues/28)
 
 
 ## How to run tests: 
