@@ -57,7 +57,7 @@ echo ""
 px-setup-assistant -d enable -f config.json > setup-r3.log
 mkdir ~/.userdata     #known bug in px-org-remote-status-service should be resolved in next release
 px-org-remote-status-service &
-sleep 20s
+sleep 30s
 
 for PID in $(ps x | grep -v grep | grep 'px-org-remote-status-service' | awk '{print $1}'); do 
     echo " > Terminating px-org-remote-status-service with PID='$PID'"
