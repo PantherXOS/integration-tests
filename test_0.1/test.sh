@@ -7,20 +7,20 @@ echo "************************************************************************"
 echo ""
 echo " update Guix package repository:"
 echo " *******************************************************"
-#if ! guix pull && guix package -u; then 
-#    echo "ERROR: unable to update guix package repository."
-#    exit -1
-#fi
+if ! guix pull && guix package -u; then 
+    echo "ERROR: unable to update guix package repository."
+    exit -1
+fi
 
 
 echo ""
 echo " install required packages "
 echo "  *******************************************************"
 
-#if ! guix package -i px-setup-assistant px-org-remote-status-service; then
-#    echo "ERROR: required package installation failed"
-#    exit -1
-#fi
+if ! guix package -i px-setup-assistant px-org-remote-status-service; then
+    echo "ERROR: required package installation failed"
+    exit -1
+fi
 
 echo ""
 echo " ************Round 1 ************ "
