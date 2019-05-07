@@ -1,0 +1,62 @@
+{
+  "use-modules": [ "gnu" ],
+  "use-service-modules": [ "networking", "ssh" ],
+  "use-package-modules": [ "screen" ],
+  "operating-system": {
+    "host-name": "Panther",
+    "timezone":"Asia/Tehran",
+    "locale": "en_US.utf8",
+    "bootloader" : {
+      "bootloader-configuration": {
+        "bootloader": "grub-bootloader",
+        "target": "/dev/sdX"
+      }
+    },
+    "file-systems": [
+      {
+        "file-system": {
+          "device": { "file-system-label": "my-root" },
+          "mount-point" : "/",
+          "type": "ext4"
+        }
+      },
+      "%base-file-systems"
+    ],
+    "users": [
+      {
+        "user-account": {
+          "name": "user1",
+          "comment": "first user",
+          "group": "users",
+          "supplementary-groups": [
+            "wheel", "audio", "video"
+          ]
+        }
+      },
+      {
+        "user-account": {
+          "name": "user2",
+          "comment": "second user",
+          "group": "users",
+          "supplementary-groups": [
+            "wheel", "audio", "video"
+          ]
+        }
+      },
+      "%base-user-accounts"
+    ],
+    "packages": [
+      "screen",
+      "%base-packages"
+    ]
+  },
+  "px-org-device": {
+    "type": "desktop",
+    "identifier": "123",
+    "uuid": "0563e0b8-55f7-4f7b-86f4-b81b2877d4fe",
+    "manager": {
+      "address": "https://pxcentral-backend.herokuapp.com",
+      "token": "cb67fc72-0d54-4c88-9d4b-b225f30b0f44cb67fc72-0d54-4c88-9d4b-b225f30b0f44cb67fc72-0d54-4c88-9d4"
+    }
+  }
+}
