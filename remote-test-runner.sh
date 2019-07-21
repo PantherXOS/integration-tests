@@ -11,7 +11,6 @@ rsync -av -e "ssh -p 2222" --exclude ".git" "." "root@127.0.0.1:$TARGET_PATH"
 echo "----------------------------------------"
 CMD="cd $TARGET_PATH;
      cd $(dirname $1);
-     ls;
      chmod +x $(basename $1);
      sh $(basename $1);"
 
