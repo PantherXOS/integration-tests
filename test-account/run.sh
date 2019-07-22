@@ -1,15 +1,19 @@
-
-
 # ==================================================
 DONE='\033[1;32mDONE\033[0m'
 FAIL='\033[1;31mFAIL\033[0m'
 
 LOG_PATH="./logs"
-DEP_LOG="$LOG_PATH/dependency.log"
+GENERAL_LOG="$LOG_PATH/general.log"
 # ==================================================
 cleanup() {
     echo "> Cleanup Old Test Log:"
-    rm -rf $LOG_PATH
+    if [ -d $LOG_PATH ]; then 
+        backup_path="$LOG_PATH-$(date +'%s')" 
+        mv $LOG_PATH $backup_path
+        mkdir -p $LOG_PATH
+        touch $GENERAL_LOG
+        echo "     - backup old logs to: $backup_path" | tee $GENERAL_LOG
+    fi
     mkdir -p $LOG_PATH
 }
 # ==================================================
@@ -23,17 +27,17 @@ install_dependency () {
         printf "\t$FAIL\n"
         echo $res
     fi
-    echo $res >> $DEP_LOG;
+    echo $res >> $GENERAL_LOG;
     return $ret
 }
 # ==================================================
 install_dependencies () {
     echo "> Installing Test Dependencies: "
-    echo "INSTALL DEPENDENCIES" > $DEP_LOG;
+    echo "INSTALL DEPENDENCIES" > $GENERAL_LOG;
     deps=("$@")
     for dep in "${deps[@]}"; do
-        echo "========================================" >> $DEP_LOG;
-        echo $dep >> $DEP_LOG;
+        echo "========================================" >> $GENERAL_LOG;
+        echo $dep >> $GENERAL_LOG;
         install_dependency $dep
         if [ $? -ne 0 ]; then
             exit 1
