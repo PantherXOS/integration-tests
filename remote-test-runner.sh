@@ -12,6 +12,6 @@ echo "----------------------------------------"
 CMD="cd $TARGET_PATH;
      cd $(dirname $1);
      chmod +x $(basename $1);
-     sh $(basename $1);"
+     sh $(basename $1) $@;"
 
 ssh root@127.0.0.1 -p 2222 $CMD;
