@@ -1,0 +1,8 @@
+account:
+   title: eth_test
+   provider: ''
+   active: true
+   settings:
+   services:
+      - etherscan:
+             api_key: "Z5J164NSDF8HITEDIJBYQP7UYXSHTW42H2"
