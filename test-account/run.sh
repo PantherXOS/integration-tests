@@ -6,6 +6,7 @@ LOG_PATH="./logs"
 GENERAL_LOG="$LOG_PATH/general.log"
 NO_DEPENDENCY=0
 DEBUG=0
+RUN_SERVICE=1
 # ==================================================
 parse_input() {
     for param in $@; do
@@ -15,6 +16,9 @@ parse_input() {
             ;;
         "--debug")
             DEBUG=1
+            ;;
+        "--no-service")
+            RUN_SERVICE=0
             ;;
         *)
             ;;
@@ -88,6 +92,7 @@ run_services() {
     for svc in "${services[@]}"; do
         run_service $svc
     done
+    sleep 2s
 }
 # ==================================================
 run_test () {
@@ -154,7 +159,9 @@ main () {
             exit
         fi
     fi
-    run_services "${services[@]}";
+    if [ $RUN_SERVICE -ne 0 ]; then
+        run_services "${services[@]}";
+    fi
     run_tests "${tests[@]}";
 }
 # ==================================================
