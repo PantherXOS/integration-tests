@@ -5,6 +5,6 @@ account:
    settings:
    services:
       - cryptocurrency:
-             name: "eth_test"
+             name: "etherscan_test"
              address: "0x8013e0869adc50458abf69af5eea42dad7468e23791fc01d4e664cf861053d4e"
              curr_type: "eth"

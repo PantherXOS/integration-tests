@@ -1,5 +1,5 @@
 account:
-   title: eth_test
+   title: etherscan_test
    provider: ''
    active: true
    settings:

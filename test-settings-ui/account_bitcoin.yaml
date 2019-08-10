@@ -1,8 +1,8 @@
 account:
-   title: btc_test
+   title: blockio_test
    provider: ''
    active: true
    settings:
    services:
-      - bitcoin:
+      - blockio:
              api_key: "0339-af79-9a14-e1d5"
