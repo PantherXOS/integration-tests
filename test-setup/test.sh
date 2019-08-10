@@ -23,7 +23,6 @@ if [ $? -eq 0 ]; then
 		if [ $? -eq 0 ]; then
 			echo "      * user (name:$user, group:$group, comment:$comment, $tz, hostname:$hostname, locale:$locale)"
 			echo "      * new-config.scm generated"
-			echo "      * guix reconfiguration done successfully"
 			echo "   - Done successfully"
 			exit 0
 		else

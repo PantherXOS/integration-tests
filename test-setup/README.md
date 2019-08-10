@@ -33,7 +33,7 @@ comment="no comment"
 hostname=GUIX$user
 px-setup-assistant -p desktop -u $user -g $group -t $tz -l $locale -c "$comment" -H $hostname -d debug -r true > setup-1.log 2>&1
 ```
-   `px-setup-assistant` run, generate `new-config.scm` and run the `quix system reconfigure new-config.scm`.
+   `px-setup-assistant` will be run and `new-config.scm` will be generated, then the syntax will be check with `guile`.
    
 3. Check output    
    If everythings goes well the user created and the system parameters (hostname, timezone, locale) will be updated.     
@@ -53,7 +53,6 @@ root@panther ~/panther/integration-tests/test-setup# ./test.sh
    - Add user as an argument
       * user (name:hamzeh, group:users, comment:no comment, Asia/Tehran, hostname:GUIXhamzeh, locale:en_US.utf8)
       * new-config.scm generated
-      * guix reconfiguration done successfully
    - Done successfully
 ```
 
