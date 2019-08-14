@@ -13,7 +13,6 @@ echo "test" > /home/$user/test.file
 echo "     - /home/$user/.config/ created"
 echo "     - copy tarsnap.key done"
 
-
 # run backup script
 echo "   + run px-org-remote-backup-create $user:"
 px-org-remote-backup-create.sh $user > logs/create-backup-valid.log 2>&1

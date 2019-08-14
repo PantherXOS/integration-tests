@@ -9,12 +9,14 @@ echo " + Running with invalid tarsnap.key"
 echo "   + Copy tarsnap.key (invalid):"
 mkdir /home/$user/.config/ -p 
 cp invalid.key /home/$user/.config/tarsnap.key
+echo "test" > /home/$user/test.file
 echo "     - /home/$user/.config/ created"
 echo "     - copy tarsnap.key done"
 
 # run backup script
 echo "   + run px-org-remote-backup-create $user:"
 px-org-remote-backup-create.sh $user > logs/create-backup-invalid.log 2>&1
+rm /home/$user/test.file
 if [ $? -eq 0 ]; then
 	echo "     - Backup created successfully"
 	echo "     - Log to /var/log/backup.log"
