@@ -16,7 +16,8 @@
     provider = "",
     active = true,
     settings = [],
-    services = [] ) )'
+    services = [
+      (name = "blockio", params = []) ] ) )'
     [ $status -eq 0 ]
     [ "$output" = "$res" ]
 }

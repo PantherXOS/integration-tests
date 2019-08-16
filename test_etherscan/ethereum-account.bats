@@ -16,7 +16,8 @@
     provider = "",
     active = true,
     settings = [],
-    services = [] ) )'
+    services = [
+      (name = "etherscan", params = []) ] ) )'
     [ $status -eq 0 ]
     [ "$output" = "$res" ]
 }
