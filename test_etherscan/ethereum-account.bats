@@ -28,6 +28,13 @@
     [ "$output" = '(result = true)' ]
 }
 
+@test "Check Invalid Address" {
+    run python3 ./eth-helper.py 'check-address-eth'
+    found=$(echo "$output" | grep 'debug: err = Account verification failed"' | wc -l)
+    [ $found -eq 0 ]
+}
+
+
 @test "Modify Ethereum Account" {
     if [ -e '/root/.userdata/accounts/my_eth_test.yaml' ]; then
         run rm '/root/.userdata/accounts/my_eth_test.yaml'

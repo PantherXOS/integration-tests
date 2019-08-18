@@ -14,6 +14,20 @@ api_act = {
     }
 }
 
+api_act_invalid = {
+    'title': 'blockio1',
+    'provider': '',
+    'active': True,
+    'settings': {
+    },
+    'services': {
+        'blockio': {
+            'api_key': '0339-af79-9a14-1426'
+        }
+    }
+}
+
+
 btc_act = {
     'title': 'btc_test',
     'provider': '',
@@ -24,6 +38,21 @@ btc_act = {
         'cryptocurrency': {
             'curr_type': 'btc',
             'address': '3BvkFoFgqKV9HHmdkiY4UYK9FU4NTyETXe',
+            'name': 'blockio1'
+        }
+    }
+}
+
+btc_act_invalid = {
+    'title': 'btc_test',
+    'provider': '',
+    'active': True,
+    'settings': {
+    },
+    'services': {
+        'cryptocurrency': {
+            'curr_type': 'btc',
+            'address': 'EsfasfaV9HHmdkiY4UYK9FU4NTyETXe',
             'name': 'blockio1'
         }
     }
@@ -54,9 +83,16 @@ if __name__ == '__main__':
                     and api_act['provider'] == recv_act.provider \
                     and api_act['active'] == recv_act.active:
                 ret = True
+        elif cmd == 'check-apikey-api':
+            rpc_act = account_helper.make_rpc_account(api_act_invalid)
+            ret = account_helper.rpc_account_create(rpc_act)
 
         elif cmd == 'create-btc':
             rpc_act = account_helper.make_rpc_account(btc_act)
+            ret = account_helper.rpc_account_create(rpc_act)
+
+        elif cmd == 'check-address-btc':
+            rpc_act = account_helper.make_rpc_account(btc_act_invalid)
             ret = account_helper.rpc_account_create(rpc_act)
 
         elif cmd == 'modify-btc':

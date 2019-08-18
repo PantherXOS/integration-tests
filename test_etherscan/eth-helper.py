@@ -29,6 +29,21 @@ eth_act = {
     }
 }
 
+eth_act_invalid = {
+    'title': 'eth_test',
+    'provider': '',
+    'active': True,
+    'settings': {
+    },
+    'services': {
+        'cryptocurrency': {
+            'curr_type': 'eth',
+            'address': 'a4D5fC5B5C859090a6c34d164135398226',
+            'name': 'etherscan1'
+        }
+    }
+}
+
 
 def check():
     recv_act = account_helper.rpc_account_get(act['title'])
@@ -57,6 +72,10 @@ if __name__ == '__main__':
 
         elif cmd == 'create-eth':
             rpc_act = account_helper.make_rpc_account(eth_act)
+            ret = account_helper.rpc_account_create(rpc_act)
+
+        elif cmd == 'check-address-eth':
+            rpc_act = account_helper.make_rpc_account(eth_act_invalid)
             ret = account_helper.rpc_account_create(rpc_act)
 
         elif cmd == 'modify-eth':
