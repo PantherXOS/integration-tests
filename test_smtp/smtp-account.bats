@@ -6,6 +6,25 @@
     [ "$output" = '(result = true)' ]
 }
 
+@test "Check Invalid Host" {
+    run python3 ./smtp-helper.py 'check-invalid-host'
+    found=$(echo "$output" | grep 'debug: err = Account verification failed"' | wc -l)
+    [ $found -eq 0 ]
+}
+
+@test "Check Invalid Username" {
+    run python3 ./smtp-helper.py 'check-invalid-username'
+    found=$(echo "$output" | grep 'debug: err = Account verification failed"' | wc -l)
+    [ $found -eq 0 ]
+}
+
+@test "Check Invalid Password" {
+    run python3 ./smtp-helper.py 'check-invalid-password'
+    found=$(echo "$output" | grep 'debug: err = Account verification failed"' | wc -l)
+    [ $found -eq 0 ]
+}
+
+
 @test "Modify SMTP Account" {
     if [ -e '/root/.userdata/accounts/my_smtp_test.yaml' ]; then
         run rm '/root/.userdata/accounts/my_smtp_test.yaml'

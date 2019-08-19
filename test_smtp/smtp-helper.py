@@ -20,6 +20,65 @@ smtp_act = {
     }
 }
 
+smtp_act1 = {
+    'title': 'smtp_test',
+    'provider': '',
+    'active': True,
+    'settings': {
+    },
+    'services': {
+        'smtp': {
+            'sender': "test2@fastmail.de",
+            'receivers': 'javaprogrammer93@gmail.com, halb@limg.moc, ',
+            'host': "smtp.1fastmail.com",
+            'username': "test2@fastmail.de",
+            'password': "h6wgvfd4us38qrm8",
+            'port': '465',
+            'message': "   From: From Person <from@fromdomain.com> To: To Person <to@todomain.com> Subject: SMTP e-mail test This is a test e-mail message."
+        }
+    }
+}
+
+smtp_act2 = {
+    'title': 'smtp_test',
+    'provider': '',
+    'active': True,
+    'settings': {
+    },
+    'services': {
+        'smtp': {
+            'sender': "test2@fastmail.de",
+            'receivers': 'javaprogrammer93@gmail.com, halb@limg.moc, ',
+            'host': "smtp.fastmail.com",
+            'username': "123test2@fastmail.de",
+            'password': "h6wgvfd4us38qrm8",
+            'port': '465',
+            'message': "   From: From Person <from@fromdomain.com> To: To Person <to@todomain.com> Subject: SMTP e-mail test This is a test e-mail message."
+        }
+    }
+}
+
+smtp_act3 = {
+    'title': 'smtp_test',
+    'provider': '',
+    'active': True,
+    'settings': {
+    },
+    'services': {
+        'smtp': {
+            'sender': "test2@fastmail.de",
+            'receivers': 'javaprogrammer93@gmail.com, halb@limg.moc, ',
+            'host': "smtp.fastmail.com",
+            'username': "test2@fastmail.de",
+            'password': "h6w4us38qrm8",
+            'port': '465',
+            'message': "   From: From Person <from@fromdomain.com> To: To Person <to@todomain.com> Subject: SMTP e-mail test This is a test e-mail message."
+        }
+    }
+}
+
+
+
 if __name__ == '__main__':
     ret = False
     if len(sys.argv) > 1:
@@ -27,6 +86,16 @@ if __name__ == '__main__':
         if cmd == 'create-smtp':
             rpc_act = account_helper.make_rpc_account(smtp_act)
             ret = account_helper.rpc_account_create(rpc_act)
+        elif cmd == 'check-invalid-host':
+            rpc_act = account_helper.make_rpc_account(smtp_act1)
+            ret = account_helper.rpc_account_create(rpc_act)
+        elif cmd == 'check-invalid-username':
+            rpc_act = account_helper.make_rpc_account(smtp_act2)
+            ret = account_helper.rpc_account_create(rpc_act)
+        elif cmd == 'check-invalid-password':
+            rpc_act = account_helper.make_rpc_account(smtp_act3)
+            ret = account_helper.rpc_account_create(rpc_act)
+
         elif cmd == 'modify-smtp':
             old_smtp = account_helper.rpc_account_get(smtp_act["title"])
             if old_smtp is not None:

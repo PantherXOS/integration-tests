@@ -2,8 +2,26 @@
 
 @test "Create IMAP Account" {
     run python3 ./imap-helper.py 'create-imap'
-
+    echo "$outpus">&3
     [ "$output" = '(result = true)' ]
+}
+
+@test "Check Invalid Host" {
+    run python3 ./imap-helper.py 'check-invalid-host'
+    found=$(echo "$output" | grep 'debug: err = Account verification failed"' | wc -l)
+    [ $found -eq 0 ]
+}
+
+@test "Check Invalid Username" {
+    run python3 ./imap-helper.py 'check-invalid-username'
+    found=$(echo "$output" | grep 'debug: err = Account verification failed"' | wc -l)
+    [ $found -eq 0 ]
+}
+
+@test "Check Invalid Password" {
+    run python3 ./imap-helper.py 'check-invalid-password'
+    found=$(echo "$output" | grep 'debug: err = Account verification failed"' | wc -l)
+    [ $found -eq 0 ]
 }
 
 @test "Modify IMAP Account" {
