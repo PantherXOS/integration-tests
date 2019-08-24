@@ -23,11 +23,6 @@
     [ $status -eq 0 ]
 }
 
-@test "Deleting the Parameter1 from Secret Service" {
-    run px-secret-service-test delParam wallet1 app1 param1
-    [ $status -eq 0 ]
-}
-
 @test "Gettings the parameters of Invalid Application" {
     run px-secret-service-test getParams wallet1 app10
     [ $status -eq 134 ]
@@ -64,7 +59,8 @@
 }
 
 @test "Getting Applications of Invalid Wallet" {
-    run px-secret-service-test getApplications wallet10 app1
+	skip
+    run px-secret-service-test getApplications wallet10
     [ $status -eq 255 ]
 }
 
@@ -75,6 +71,11 @@
 
 @test "Getting the Wallets from Secret Service" {
     run px-secret-service-test getWallets
+    [ $status -eq 0 ]
+}
+
+@test "Deleting the Parameter1 from Secret Service" {
+    run px-secret-service-test delParam wallet1 app1 param1
     [ $status -eq 0 ]
 }
 
@@ -94,6 +95,7 @@
 }
 
 @test "Deleting Invalid Wallet" {
+	skip
     run px-secret-service-test delWallet wallet10
     [ $status -eq 255 ]
 }
