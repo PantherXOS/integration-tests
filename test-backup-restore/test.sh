@@ -3,7 +3,7 @@ echo "-------------------------------------------------"
 echo "        px-org-remote-status and backup"
 echo "               Integration Test"
 echo "-------------------------------------------------"
-user=panther
+user=user1
 
 # package installation
 #echo " + Package installation:"
@@ -17,6 +17,7 @@ user=panther
 #fi
 
 echo " + Running status service:"
+cp device.conf /root/.config/
 px-org-remote-status-service &
 if [ $? -eq 0 ]; then
     echo "   - success"

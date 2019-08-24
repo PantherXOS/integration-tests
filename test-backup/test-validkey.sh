@@ -2,7 +2,7 @@
 echo "-------------------------------------------------"
 echo "        px-org-remote-backup-create test"
 echo "-------------------------------------------------"
-user=panther
+user=user1
 mkdir logs
 echo " + Running with valid tarsnap.key"
 # copy mockup tarsnap.key
