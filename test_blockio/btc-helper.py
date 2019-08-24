@@ -9,7 +9,7 @@ api_act = {
     },
     'services': {
         'blockio': {
-            'api_key': '0339-af79-9a14-e1d5'
+            'api_key': '0339-af79-9a14-4545'
         }
     }
 }
