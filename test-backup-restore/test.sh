@@ -17,10 +17,11 @@ user=user1
 #fi
 
 echo " + Running status service:"
+px-org-remote-status-service 2>&1 > status-service.log &
 cp device.conf /root/.config/
 px-org-remote-status-service &
 if [ $? -eq 0 ]; then
-    echo "   - success"
+	echo "   - success"
 else
 	echo "   - failed"
 fi
@@ -51,3 +52,9 @@ for pid in $(ps aux | grep -v grep | grep px-org-remote-status-service | awk '{p
     kill $pid;
 done
 
+cat status-service.log | grep "Stat Data sent successfully"
+if [ $? -eq 0 ]; then
+    exit 0
+else
+    exit 1
+fi
