@@ -1,9 +1,19 @@
 
+@test "Create Python Test Account" { 
+    run python3 ./test-001-create-eth-helper.py 'create-python-test'
+    if [ "$status" -ne 0 ]; then
+        echo "$output" >&3;
+    fi
+    [ "$output" == "sample warning" ] 
+    [ $status -eq 0 ]
+}
 
 @test "Create Etherscan Account" {
     run python3 ./test-001-create-eth-helper.py 'create-api'
+    if [ "$status" -ne 0 ]; then
+        echo "$output" >&3;
+    fi
     [ $status -eq 0 ]
-    [ "$output" = '(result = true)' ]
 }
 
 @test "Check Etherscan Account" {
@@ -11,20 +21,15 @@
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
-    res='( account = (
-    title = "etherscan1",
-    provider = "",
-    active = true,
-    settings = [],
-    services = [] ) )'
     [ $status -eq 0 ]
-    [ "$output" = "$res" ]
 }
 
 @test "Create Ethereum Account" {
     run python3 ./test-001-create-eth-helper.py 'create-eth'
-
-    [ "$output" = '(result = true)' ]
+    if [ "$status" -ne 0 ]; then
+        echo "$output" >&3;
+    fi
+    [ $status -eq 0 ]
 }
 
 @test "Modify Ethereum Account" {
@@ -33,6 +38,9 @@
         [ "$status" -eq 0 ]
     fi
     run python3 ./test-001-create-eth-helper.py 'modify-eth'
+    if [ "$status" -ne 0 ]; then
+        echo "$output" >&3;
+    fi
     [ $status -eq 0 ]    
     found=$(echo "$output" | grep 'title = "my_eth_test"' | wc -l)
     [ $found -gt 0 ]
@@ -40,6 +48,8 @@
 
 @test "Remove Ethereum Account" {
     run python3 ./test-001-create-eth-helper.py 'remove-eth'
+    if [ "$status" -ne 0 ]; then
+        echo "$output" >&3;
+    fi
     [ $status -eq 0 ]
-    [ "$output" = '(result = true)' ]
 }
