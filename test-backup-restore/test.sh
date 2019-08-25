@@ -6,22 +6,22 @@ echo "-------------------------------------------------"
 user=panther
 
 # package installation
-echo " + Package installation:"
-guix package -i px-org-remote-backup-service px-org-remote-status-service > pkg-installation.log 2>&1
-if [ $? -eq 0 ]; then
-    echo "   - px-org-remote-backup-service : installed"
-    echo "   - px-org-remote-status-service : installed"
-else
-	echo "   - ! error in package installation (more information in pkg-installation.log)"
-	exit -1
-fi
+#echo " + Package installation:"
+#guix package -i px-org-remote-backup-service px-org-remote-status-service > pkg-installation.log 2>&1
+#if [ $? -eq 0 ]; then
+#    echo "   - px-org-remote-backup-service : installed"
+#    echo "   - px-org-remote-status-service : installed"
+#else
+#	echo "   - ! error in package installation (more information in pkg-installation.log)"
+#	exit -1
+#fi
 
 echo " + Running status service:"
 px-org-remote-status-service &
 if [ $? -eq 0 ]; then
-    echo "   - failed"
+    echo "   - success"
 else
-	echo "   - success"
+	echo "   - failed"
 fi
 
 echo " + Running with valid tarsnap.key"
@@ -45,22 +45,8 @@ else
 	echo "     - Log to /var/log/backup.log"
 fi
 
-echo ""
-echo " + Running with invalid tarsnap.key"
-# copy mockup tarsnap.key
-echo "   + Copy tarsnap.key (invalid):"
-mkdir /home/$user/.config/ -p 
-cp invalid.key /home/$user/.config/tarsnap.key
-echo "     - /home/$user/.config/ created"
-echo "     - copy tarsnap.key done"
+sleep 30
+for pid in $(ps aux | grep -v grep | grep px-org-remote-status-service | awk '{print $2}'); do
+    kill $pid;
+done
 
-# run backup script
-echo "   + run px-org-remote-backup-create $user:"
-px-org-remote-backup-create.sh $user > create-backup-invalid.log 2>&1
-if [ $? -eq 0 ]; then
-	echo "     - Backup created successfully"
-	echo "     - Log to /var/log/backup.log"
-else
-	echo "     - Backup created failed (more information in create-backup-invalid.log)"
-	echo "     - Log to /var/log/backup.log"
-fi
