@@ -36,6 +36,34 @@ def make_rpc_account(act):
             i += 1
     return rpc_act
 
+def make_rpc_account_new(actObj):
+    act = actObj['account']
+    rpc_act = Account.new_message(title=act['title'],
+                                  provider=act['provider'],
+                                  active=act['active'])
+    if len(act['settings']) > 0:
+        rpc_settings = rpc_act.init('settings', len(act['settings']))
+        i = 0
+        for key in act['settings']:
+            rpc_settings[i].key = key
+            rpc_settings[i].value = act['settings'][key]
+            i += 1
+    if len(act['services']) > 0:
+        rpc_services = rpc_act.init('services', len(act['services']))
+        i = 0
+        for svc in act['services']:
+            for key in svc:
+                rpc_services[i].name = key
+                if len(svc[key]) > 0:
+                    rpc_params = rpc_services[i].init(
+                        'params', len(svc[key]))
+                    j = 0
+                    for param_key in svc[key]:
+                        rpc_params[j].key = param_key
+                        rpc_params[j].value = svc[key][param_key]
+                        j += 1
+            i += 1
+    return rpc_act
 
 def _create_client(path):
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
