@@ -4,9 +4,10 @@ rm -rf logs
 mkdir -p logs
 px-accounts-service --debug 2>&1 > logs/account.log &
 px-secret-service -d 2>&1 > logs/secret.log &
-sleep 2s
+sleep 1s
 
 bats .
+# bats test-002-public-account.bats
 
 echo '----------------------------------------'
 for pid in $(ps aux | grep -v grep | grep px-accounts-service | awk '{print $2}'); do
