@@ -1,0 +1,26 @@
+- id: 0
+  name: templates
+  title: ""
+  description: New Account
+  subsections:
+    - id: 0
+      name: blockio
+      title: BlockIO
+      description: Blockio allows you to explore and search the BitCoin blockchain for transactions, addresses, tokens, prices and other activities taking place on Ethereum.
+      params:
+        - id: 0
+          key: accountName
+          title: Account Name
+          description: Account Name
+          value: [invalid-btc]
+      subsections:
+        - id: 0
+          name: blockio
+          title: ""
+          description: blockio
+          params:
+            - id: 0
+              key: api_key
+              title: API key
+              description: Enter the apikey.
+              value: [11223344556677889900]
