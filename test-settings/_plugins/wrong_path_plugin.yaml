@@ -1,0 +1,5 @@
+plugin:
+  name: px-settings-service-plugin-invalid
+  version: 0.0.1
+  type: python
+  path: ../../px-settings-service-plugin-invalid

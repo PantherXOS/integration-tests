@@ -1,0 +1,5 @@
+plugin:
+  name: px-settings-service-plugin-invalid
+  version: 0.0.1
+  type: cpp
+  path: _plugins/libpx-settings-service-plugin-invalid.so
