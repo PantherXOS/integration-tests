@@ -14,7 +14,7 @@ serivce_is_avail ()
 	done
 	return 1
 }
-
+result=0
 rm plugins -rf
 mkdir plugins
 kill_service
