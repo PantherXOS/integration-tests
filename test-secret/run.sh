@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mkdir -p logs
-px-secret-service -d 2>&1 > logs/secret.log &
+px-secret-service -d &> logs/secret.log &
 sleep 2s
 
 bats .

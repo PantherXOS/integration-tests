@@ -1,8 +1,8 @@
 #!/bin/sh
 
 mkdir -p logs
-px-accounts-service --debug 2>&1 > logs/account.log &
-px-secret-service -d 2>&1 > logs/secret.log &
+px-accounts-service --debug &> logs/account.log &
+px-secret-service -d &> logs/secret.log &
 sleep 2s
 
 bats .

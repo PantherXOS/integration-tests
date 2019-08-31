@@ -1,10 +1,10 @@
 #!/bin/sh
 
 mkdir -p logs
-px-secret-service -d > logs/secret.log 2>&1&
-px-accounts-service -d > logs/accounts.log 2>&1 &
+px-secret-service -d &> logs/secret.log &
+px-accounts-service -d &> logs/accounts.log &
 sleep 5
-px-settings-service -d > logs/settings.log 2>&1 &
+px-settings-service -d &> logs/settings.log  &
 sleep 2
 
 bats .

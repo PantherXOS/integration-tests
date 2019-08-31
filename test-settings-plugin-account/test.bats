@@ -18,8 +18,8 @@
     [ $status -eq 0 ]
 }
 
-@test "Edit Account - px-settings-ui (issue#24)" {
-    skip
+@test "Edit Account" {
+    skip "px-settings-ui (issue#24)"
     run px-settings-service-test 
     [ $status -eq 0 ]
 }
@@ -29,14 +29,15 @@
     [ $status -eq 0 ]
 }
 
-@test "Add Invalid Blockio Account - px-settings-service-plugin-accounts (issue#15) " {
-    skip
+@test "Add Invalid Blockio Account" {
+    skip "px-settings-service-plugin-accounts (issue#15)"
     run px-settings-service-test addToSection accounts templates btc-invalid-account.yaml
     [ $status -eq 0 ]
 }
 
-@test "Remove Invalid Account - px-settings-service-plugin-accounts (issue#15)" {
-    skip
+# @test "Remove Invalid Account - px-settings-service-plugin-accounts (issue#15)" {
+@test "Remove Invalid Account" {
+    skip "px-settings-service-plugin-accounts (issue#15)"
     run px-settings-service-test removeFromSection accounts btc-invalid-account 0 
     [ $status -eq 0 ]
 }
