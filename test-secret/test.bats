@@ -59,9 +59,8 @@
 }
 
 @test "Getting Applications of Invalid Wallet" {
-	skip
     run px-secret-service-test getApplications wallet10
-    [ $status -eq 255 ]
+    [ $status -eq 134 ]
 }
 
 @test "Getting the Applications from Secret Service" {
@@ -95,7 +94,6 @@
 }
 
 @test "Deleting Invalid Wallet" {
-	skip
     run px-secret-service-test delWallet wallet10
     [ $status -eq 255 ]
 }
