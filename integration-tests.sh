@@ -2,10 +2,11 @@
 declare -a packages
 tests=(
     "test_smtp"
-    # "test_imap"
+       # "test_imap"
     "test_etherscan"
-    # "test_blockio"
-    # "test-backup"
+       # "test_blockio"
+    "test-backup"
+    "test-account"
     "test-event"
     "test-secret"
     "test-settings"
@@ -41,11 +42,37 @@ for test in "${tests[@]}"; do
     fi
 done
 
+GUIX_PROFILE="/root/.config/guix/current" . "$GUIX_PROFILE/etc/profile"
+
 echo ""
 echo ">>> Execute Tests: "
+total=0
+success=0
+skip=0
+fail=0
+exec {stdout_copy}>&1
 for test in "${tests[@]}"; do
     echo "$test";
     cd "$test"
-    sh run.sh
+    result=$(sh run.sh | tee /dev/fd/"$stdout_copy")
+    echo '----------------------------------------'
     cd ..
+
+    cnt_total=$(echo "$result" | grep -E "^(not )?ok [0-9]+" | wc -l)
+    cnt_success=$(echo "$result" | grep -E "^ok [0-9]+" | wc -l)
+    cnt_skip=$(echo "$result" | grep -E "^ok [0-9]+" | grep -E "# skip" | wc -l)
+    cnt_fail=$(echo "$result" | grep -E "^not ok [0-9]+" | wc -l)
+    total=$(($total+$cnt_total))
+    success=$(($success+$cnt_success-$cnt_skip))
+    skip=$(($skip+$cnt_skip))
+    fail=$(($fail+$cnt_fail))
 done
+exec {stdout_copy}>&-
+echo ""
+echo "Overall Test Results:"
+echo '----------------------------------------'
+echo "Total: $total"
+echo "Success: $success"
+echo "Skip: $skip"
+echo "Fail: $fail"
+echo '----------------------------------------'

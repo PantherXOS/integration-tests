@@ -2,6 +2,9 @@
 
 @test "Create Etherscan Account" {
     run python3 ./eth-helper.py 'create-api'
+    if [ "$status" -ne 0 ]; then
+        echo "$output" >&3;
+    fi
     [ $status -eq 0 ]
     [ "$output" = '(result = true)' ]
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TARGET_PATH="/root/tmp/integration-tests"
+TARGET_PATH="/root/projects/integration-tests"
 
 ## uncomment following line in case of running a fresh test
 # ssh root@127.0.0.1 -p 2222 "rm -rf $TARGET_PATH"

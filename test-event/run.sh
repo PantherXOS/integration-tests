@@ -16,7 +16,6 @@ sleep 2s
 
 bats .
 
-echo '----------------------------------------'
 for pid in $(ps aux | grep -v grep | grep px-accounts-service | awk '{print $2}'); do
     kill $pid;
 done
@@ -26,6 +25,3 @@ done
 for pid in $(ps aux | grep -v grep | grep px-events-service | awk '{print $2}'); do
     kill $pid;
 done
-echo '----------------------------------------'
-# cat logs/account.log
-echo '----------------------------------------'

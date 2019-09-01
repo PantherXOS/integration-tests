@@ -9,7 +9,6 @@ sleep 2
 
 bats .
 
-echo '----------------------------------------'
 for pid in $(ps aux | grep -v grep | grep px-settings-service | awk '{print $2}'); do
     kill $pid;
 done

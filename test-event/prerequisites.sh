@@ -1,3 +1,3 @@
 #!/bin/sh
 
-guix package -i px-events-service
+guix package -i px-events-service python-pynng
