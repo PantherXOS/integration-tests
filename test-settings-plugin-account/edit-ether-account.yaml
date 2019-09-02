@@ -1,0 +1,20 @@
+- id: 0
+  name: templates
+  title: ""
+  description: New Account
+  subsections:
+    - id: 0
+      name: integration-ether-test
+      title: integration-ether-test
+      description: ""
+      subsections:
+        - id: 0
+          name: etherscan
+          title: ""
+          description: etherscan
+          params:
+            - id: 0
+              key: api_key
+              title: API key
+              description: Enter the apikey.
+              value: [11223344556677889900999999999]
