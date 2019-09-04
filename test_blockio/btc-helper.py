@@ -76,7 +76,6 @@ if __name__ == '__main__':
         if cmd == 'create-api':
             rpc_act = account_helper.make_rpc_account(api_act)
             ret = account_helper.rpc_account_create(rpc_act)
-
         elif cmd == 'check-api':
             recv_act = account_helper.rpc_account_get(api_act['title'])
             if api_act['title'] == recv_act.title \
