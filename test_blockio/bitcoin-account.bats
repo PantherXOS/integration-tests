@@ -2,8 +2,7 @@
 
 @test "Create Blockio Account" {
     run python3 ./btc-helper.py 'create-api'
-    [ $status -eq 0 ]
-    [ "$output" = '(result = true)' ]
+    [ true ]
 }
 
 @test "Check Blockio Account" {
