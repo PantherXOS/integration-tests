@@ -19,7 +19,7 @@
 }
 
 @test "Edit Account" {
-    skip "px-settings-ui/issues/26"
+    skip "px-settings-service-plugin-accounts/issues/16"
     run  px-settings-service-test editSection accounts accounts 0 edit-ether-account.yaml
     [ $status -eq 0 ]
 }
