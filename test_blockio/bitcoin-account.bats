@@ -2,7 +2,8 @@
 
 @test "Create Blockio Account" {
     run python3 ./btc-helper.py 'create-api'
-    [ true ]
+    [ "$output" = '(result = true, warnings = [])' ]
+
 }
 
 @test "Check Blockio Account" {
@@ -31,7 +32,7 @@
 @test "Create Bitcoin Account" {
     run python3 ./btc-helper.py 'create-btc'
 
-    [ "$output" = '(result = true)' ]
+    [ "$output" = '(result = true, warnings = [])' ]
 }
 
 @test "Check Invalid Address" {

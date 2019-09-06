@@ -9,7 +9,7 @@ api_act = {
     },
     'services': {
         'blockio': {
-            'api_key': '0339-af79-9a14-4545'
+            'api_key': '0339-af79-9a14-e1d5'
         }
     }
 }
@@ -59,16 +59,6 @@ btc_act_invalid = {
 }
 
 
-def check():
-    recv_act = account_helper.rpc_account_get(act['title'])
-    print(recv_act)
-    if act['title'] != recv_act.title \
-            or act['provider'] != recv_act.provider \
-            or act['active'] != recv_act.active:
-        return False
-    return True
-
-
 if __name__ == '__main__':
     ret = False
     if len(sys.argv) > 1:
@@ -82,10 +72,11 @@ if __name__ == '__main__':
                     and api_act['provider'] == recv_act.provider \
                     and api_act['active'] == recv_act.active:
                 ret = True
+             
         elif cmd == 'check-apikey-api':
             rpc_act = account_helper.make_rpc_account(api_act_invalid)
             ret = account_helper.rpc_account_create(rpc_act)
-
+            ret = not ret
         elif cmd == 'create-btc':
             rpc_act = account_helper.make_rpc_account(btc_act)
             ret = account_helper.rpc_account_create(rpc_act)
@@ -93,7 +84,7 @@ if __name__ == '__main__':
         elif cmd == 'check-address-btc':
             rpc_act = account_helper.make_rpc_account(btc_act_invalid)
             ret = account_helper.rpc_account_create(rpc_act)
-
+            ret = not ret
         elif cmd == 'modify-btc':
             old_btc = account_helper.rpc_account_get(btc_act["title"])
             if old_btc is not None:

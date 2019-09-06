@@ -144,24 +144,14 @@ def rpc_account_create(act):
     # add @0 (account: Account) -> (result: Bool);
     request = client.add_request()
     request.account = act
-    response = request.send().wait()
-    print(response)
-    if response.result == True:
-        return True    
-    return False
-    # try:
-    #     client = _create_client(account_path)
-    #     # add @0 (account: Account) -> (result: Bool);
-    #     request = client.add_request()
-    #     request.account = act
-    #     response = request.send().wait()
-    #     print(response)
-    #     if response.result == True:
-    #         return True
-    # except Exception as ex:
-    #     print(ex)
-    # return False
-
+    try:
+       response = request.send().wait()
+       print(response)
+       if response.result == True:
+          return True    
+       return False
+    except:
+       return False
 
 def rpc_account_edit(title, act):
     try:
