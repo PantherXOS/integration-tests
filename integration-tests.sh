@@ -2,7 +2,7 @@
 declare -a packages
 tests=(
     "test_smtp"
-       # "test_imap"
+    "test_imap"
     "test_etherscan"
        # "test_blockio"
     "test-backup"
