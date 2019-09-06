@@ -4,7 +4,7 @@ tests=(
     "test_smtp"
        # "test_imap"
     "test_etherscan"
-       # "test_blockio"
+    "test_blockio"
     "test-backup"
     "test-account"
     "test-event"
