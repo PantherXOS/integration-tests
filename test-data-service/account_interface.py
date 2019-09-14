@@ -2,12 +2,12 @@ import socket
 from os.path import expanduser
 
 import capnp
-from Account_capnp import Account
-from AccountWriter_capnp import AccountWriter
+from px_data_service.Account_capnp import Account
+from px_data_service.AccountWriter_capnp import AccountWriter
 
 
 account_path = expanduser('~') + '/.userdata/rpc/accounts'
-
+capnp.create_event_loop(True)
 
 def make_rpc_account(act):
     rpc_act = Account.new_message(title=act['title'],
