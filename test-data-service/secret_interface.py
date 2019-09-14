@@ -3,7 +3,7 @@ from os.path import expanduser
 import getpass
 
 import capnp
-from Secret_capnp import RPCSecretService
+from px_data_service.Secret_capnp import RPCSecretService
 
 secret_path = expanduser('~') + '/.userdata/rpc/secret'
 
