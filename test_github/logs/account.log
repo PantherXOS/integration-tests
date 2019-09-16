@@ -1,0 +1,60 @@
+[INF] - [main.cpp][main](44): === DEBUG MODE ===
+[INF] - [PluginManager.cpp][init](60): ========================================================================================================
+[INF] - [PluginManager.cpp][init](61): search for registered plugins on: /run/current-system/profile/etc/px/accounts/plugins
+[INF] - [PluginManager.cpp][init](60): ========================================================================================================
+[INF] - [PluginManager.cpp][init](61): search for registered plugins on: /root/.guix-profile/etc/px/accounts/plugins
+[INF] - [PluginManager.cpp][init](67):    - new plugin loaded: [PYTHON]: smtp
+[INF] - [PluginManager.cpp][init](67):    - new plugin loaded: [CPP]: cpp-test
+[INF] - [PluginManager.cpp][init](67):    - new plugin loaded: [PYTHON]: cryptocurrency
+[INF] - [PluginManager.cpp][init](67):    - new plugin loaded: [PYTHON]: github
+[INF] - [PluginManager.cpp][init](67):    - new plugin loaded: [PYTHON]: blockio
+[INF] - [PluginManager.cpp][init](67):    - new plugin loaded: [PYTHON]: imap
+[INF] - [PluginManager.cpp][init](67):    - new plugin loaded: [PYTHON]: public-test
+[INF] - [PluginManager.cpp][init](67):    - new plugin loaded: [PYTHON]: etherscan
+[INF] - [PluginManager.cpp][init](67):    - new plugin loaded: [PYTHON]: python-test
+[INF] - [PluginManager.cpp][init](60): ========================================================================================================
+[INF] - [PluginManager.cpp][init](61): search for registered plugins on: ./plugins
+Server started
+[INF] - [RPCHandler.cpp][add](114): ==========================================================
+[INF] - [AccountManager.cpp][verifyAccount](57): verifying Account: (title: 'github_test')
+[INF] - [AccountManager.cpp][verifyService](117): verifying service: 'github'
+[INF] - [AccountManager.cpp][performServiceParamVerification](165): parameters are verified:
+[INF] - [AccountManager.cpp][performServiceParamVerification](169): 	password : h6wgvfd4us38qrm8 - PROTECTED - REQUIRED
+[INF] - [AccountManager.cpp][performServiceParamVerification](169): 	username : test1github002 - REQUIRED
+[INF] - [AccountManager.cpp][performServiceAuthentication](190): service authenticated:
+[INF] - [SecretManager.cpp][getParam](266): wlt: root - app: github_test - key: github_password
+[INF] - [SecretManager.cpp][addParam](194): wlt: root - app: github_test - key: github_password - val: h6wgvfd4us38qrm8
+[INF] - [RPCHandler.cpp][add](114): ==========================================================
+[INF] - [AccountManager.cpp][verifyAccount](57): verifying Account: (title: 'github_test')
+[INF] - [AccountManager.cpp][verifyService](117): verifying service: 'github'
+[INF] - [AccountManager.cpp][performServiceParamVerification](165): parameters are verified:
+[INF] - [AccountManager.cpp][performServiceParamVerification](169): 	password : h6wgvfd4us38qrm8 - PROTECTED - REQUIRED
+[INF] - [AccountManager.cpp][performServiceParamVerification](169): 	username : 1test1github002 - REQUIRED
+RPCHandler.cpp:125: debug: err = Account verification failed
+[INF] - [RPCHandler.cpp][add](114): ==========================================================
+[INF] - [AccountManager.cpp][verifyAccount](57): verifying Account: (title: 'github_test')
+[INF] - [AccountManager.cpp][verifyService](117): verifying service: 'github'
+[INF] - [AccountManager.cpp][performServiceParamVerification](165): parameters are verified:
+[INF] - [AccountManager.cpp][performServiceParamVerification](169): 	password : h6wgvfd4us38qrm823 - PROTECTED - REQUIRED
+[INF] - [AccountManager.cpp][performServiceParamVerification](169): 	username : test1github002 - REQUIRED
+RPCHandler.cpp:125: debug: err = Account verification failed
+[INF] - [RPCHandler.cpp][get](42): ==========================================================
+[INF] - [RPCHandler.cpp][edit](140): ==========================================================
+[INF] - [SecretManager.cpp][getParams](303): wlt: root - app: github_test
+[INF] - [SecretManager.cpp][getParam](266): wlt: root - app: github_test - key: github_password
+[INF] - [SecretManager.cpp][getParam](266): wlt: root - app: my_github_test - key: github_password
+[INF] - [SecretManager.cpp][editParam](230): wlt: root - app: my_github_test - key: github_password - val: h6wgvfd4us38qrm8
+[INF] - [AccountManager.cpp][verifyAccount](57): verifying Account: (title: 'my_github_test')
+[INF] - [AccountManager.cpp][verifyService](117): verifying service: 'github'
+[INF] - [SecretManager.cpp][getParam](266): wlt: root - app: my_github_test - key: github_password
+[INF] - [AccountManager.cpp][performServiceParamVerification](160): protected param value loaded: password -> h6wgvfd4us38qrm8
+[INF] - [AccountManager.cpp][performServiceParamVerification](165): parameters are verified:
+[INF] - [AccountManager.cpp][performServiceParamVerification](169): 	username : test1github002 - REQUIRED
+[INF] - [AccountManager.cpp][performServiceParamVerification](169): 	password : h6wgvfd4us38qrm8 - PROTECTED
+[INF] - [AccountManager.cpp][performServiceAuthentication](190): service authenticated:
+[INF] - [SecretManager.cpp][getParam](266): wlt: root - app: my_github_test - key: github_password
+[INF] - [SecretManager.cpp][editParam](230): wlt: root - app: my_github_test - key: github_password - val: h6wgvfd4us38qrm8
+[INF] - [SecretManager.cpp][getParams](303): wlt: root - app: github_test
+[INF] - [SecretManager.cpp][delApplication](370): wlt: root - app: github_test
+[INF] - [RPCHandler.cpp][get](42): ==========================================================
+[INF] - [RPCHandler.cpp][remove](168): ==========================================================
