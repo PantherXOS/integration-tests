@@ -4,8 +4,8 @@
   # in removing protected params, which is not existed
   # ref: https://git.pantherx.org/development/applications/px-accounts-service/issues/47
 
-  if [ -e '/root/.userdata/accounts/modified_public_test.yaml' ]; then
-    run rm '/root/.userdata/accounts/modified_public_test.yaml'
+  if [ -e "$HOME/.userdata/accounts/modified_public_test.yaml" ]; then
+    run rm "$HOME/.userdata/accounts/modified_public_test.yaml"
     [ "$status" -eq 0 ]
   fi
 

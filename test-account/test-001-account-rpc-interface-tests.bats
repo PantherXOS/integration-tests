@@ -43,12 +43,12 @@ EOF
 }
 
 @test "Edit Account Title" {
-    if [ -e "/root/.userdata/accounts/$act1_title.yaml" ]; then
-        run rm "/root/.userdata/accounts/$act1_title.yaml";
+    if [ -e "$HOME/.userdata/accounts/$act1_title.yaml" ]; then
+        run rm "$HOME/.userdata/accounts/$act1_title.yaml";
         [ "$status" -eq 0 ]
     fi
-    if [ -e "/root/.userdata/accounts/$act2_title.yaml" ]; then
-        run rm "/root/.userdata/accounts/$act2_title.yaml";
+    if [ -e "$HOME/.userdata/accounts/$act2_title.yaml" ]; then
+        run rm "$HOME/.userdata/accounts/$act2_title.yaml";
         [ "$status" -eq 0 ]
     fi
 
