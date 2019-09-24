@@ -8,7 +8,11 @@ px-events-service -d &> logs/event.log &
 px-accounts-service --debug &> logs/account.log &
 sleep 2s
 
-bats .
+if [ "$#" -eq 0 ]; then
+    bats .
+else
+    bats "$1"
+fi
 
 echo '----------------------------------------'
 for pid in $(ps aux | grep -v grep | grep px-accounts-service | awk '{print $2}'); do
