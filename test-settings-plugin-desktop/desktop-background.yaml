@@ -1,0 +1,28 @@
+- id: 0
+  name: background
+  title: Background
+  description: ""
+  subsections:
+    - id: 0
+      name: background
+      title: Background
+      description: ""
+      params:
+        - id: 1
+          key: wallpaper_mode
+          title: Mode
+          description: Wallpaper Mode
+          value:
+            - none
+        - id: 2
+          key: wallpaper_image_file
+          title: File
+          description: Image File Path
+          value:
+            - /home/panther/Desktop/linux-background.jpg
+        - id: 3
+          key: background_color
+          title: Color
+          description: Background Color (#aabbcc)
+          value:
+            - "#aaddff"

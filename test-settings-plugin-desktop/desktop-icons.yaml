@@ -1,0 +1,16 @@
+- id: 0
+  name: icons
+  title: Icons
+  description: ""
+  subsections:
+    - id: 0
+      name: icons
+      title: Icons
+      description: ""
+      params:
+        - id: 1
+          key: icon_size
+          title: Size
+          description: Size of Icons
+          value:
+            - 32
