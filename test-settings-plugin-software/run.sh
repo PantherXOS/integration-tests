@@ -9,9 +9,11 @@ mv current-software-update.yaml backup-software-update.yaml
 
 bats .
 
+# restore previous settings
 px-settings-service-test addToSection software update backup-software-update.yaml > logs/restore.log  2>&1 
 px-settings-service-test apply software  > logs/apply.log  2>&1 
-rm current-*.yaml
+rm current-*.yaml backup-*.yaml
+
 for pid in $(ps aux | grep -v grep | grep px-settings-service | awk '{print $2}'); do
     kill $pid;
 done
