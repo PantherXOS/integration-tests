@@ -1,0 +1,28 @@
+- id: 0
+  name: update
+  title: Automatically Update
+  description: ""
+  subsections:
+    - id: 0
+      name: update
+      title: Automatically Update
+      description: ""
+      params:
+        - id: 1
+          key: enable
+          title: Enable
+          description: Enable/Disable Auto Update Check
+          value:
+            - true
+        - id: 2
+          key: interval
+          title: Interval
+          description: Interval for check update
+          value:
+            - Daily
+        - id: 3
+          key: time
+          title: Time (HH:MM - 13:45)
+          description: Time of day for check update(HH:MM = 12:00)
+          value:
+            - 09:00
