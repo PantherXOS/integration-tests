@@ -1,0 +1,16 @@
+- id: 0
+  name: Virtual-1
+  title: Virtual-1
+  description: ""
+  subsections:
+    - id: 0
+      name: Virtual-1
+      title: Virtual-1
+      description: ""
+      params:
+        - id: 0
+          key: resolution
+          title: ""
+          description: Set resolution for your display
+          value:
+            - 800x680
