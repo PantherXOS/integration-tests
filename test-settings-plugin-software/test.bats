@@ -20,7 +20,6 @@
 }
 
 @test "Write Invalid Software Settings" {
-    skip "Invalid data protection issue"
     run px-settings-service-test addToSection software update invalid-software-update.yaml
     [ $status -eq 255 ]
 }
