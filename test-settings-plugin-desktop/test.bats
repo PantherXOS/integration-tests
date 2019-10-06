@@ -31,7 +31,6 @@
 }
 
 @test "Write Invalid Desktop Settings" {
-    skip "Invalid data protection issue"
     run px-settings-service-test addToSection desktop background invalid-desktop-background.yaml
     [ $status -eq 255 ]
 }
