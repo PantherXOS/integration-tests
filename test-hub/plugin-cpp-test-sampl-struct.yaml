@@ -1,0 +1,15 @@
+unread: 11
+source: Sample
+status: 0
+link: Account link
+icon: icon.png
+altLink: Account alt-link
+subType: Sub type
+messages:
+  - message:
+      title: test-title
+      sender: test-sender
+      id: 0
+      altLink: sample
+      link: sample link
+      content: Sample message for hub cpp-test plugin.
