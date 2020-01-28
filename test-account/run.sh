@@ -4,8 +4,8 @@ rm -rf logs
 mkdir -p logs
 
 px-secret-service -d &> logs/secret.log &
-px-events-service -d &> logs/event.log &
-px-accounts-service --debug &> logs/account.log &
+px-events-service -d -t console &> logs/event.log &
+px-accounts-service -d -t console &> logs/account.log &
 sleep 2s
 
 if [ "$#" -eq 0 ]; then
