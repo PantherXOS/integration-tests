@@ -1,18 +1,19 @@
 
 declare -a packages
 tests=(
-    "test_smtp"
-    "test_imap"
-    "test_etherscan"
-    "test_blockio"
-    "test-backup"
-    "test-account"
-    "test-event"
-    "test-secret"
-    "test-settings"
-    "test-settings-plugin-account"
-    "test-setup"
-    "test-status-service"
+    #"test_smtp"
+    #"test_imap"
+    #"test_etherscan"
+    #"test_blockio"
+    #"test-backup"
+    #"test-account"
+    #"test-event"
+    #"test-secret"
+    #"test-settings"
+    #"test-settings-plugin-account"
+    #"test-setup"
+    #"test-status-service"
+    "test-network-inspection"
     )
 
 
