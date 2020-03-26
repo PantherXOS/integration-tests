@@ -6,5 +6,5 @@ output_file="./output.json"
 	run px-network-inspection -o "$output_file"
 
 	[ -f "$output_file" ]
-	[ "$status" -eq 0]
+	[ "$status" -eq 0 ]
 }
