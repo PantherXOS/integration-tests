@@ -1,7 +1,7 @@
 
-@test "VPN Check" {
+@test "OpenVPN Check" {
 	# Checks if the VPN information is correct
-	
+	skip	
 	run px-network-inspection -o ./output.json
 	[ "$status" -eq 0 ]
 	run jq .primary[2]? ./output.json
@@ -17,8 +17,9 @@
 		route_res=`route -n | grep ${gw} | grep ${adapter}`
 		#echo "$route_res" >&3
 		#[ -n "$route_res" ]
+		run jq .primary[2].profile ./output.json
+		prf="${output%\"}"
+		prf="${prf#\"}"
+		prf_res=`ps -aef | grep -v "grep" | grep openvpn | grep ${prf}`
 	fi
-	#tempip4=`ip -4 addr show dev ${adapter} | grep inet | tr -s " " | cut -d" " -f3 | head -n 1`
-	#tempip4=${tempip4%/*}
-	#[ "$ip4" == "$tempip4" ]
 }

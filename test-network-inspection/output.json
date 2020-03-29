@@ -1,0 +1,1 @@
+{ "primary": [ { "pos": 0, "adapter": "PUBLIC", "method": "NONE", "type": "display", "ip4": "5.113.238.145", "ip6": "", "dns": "", "gateway": "", "status": "ACTIVE" }, { "pos": 1, "adapter": "enp0s3", "method": "lan", "type": "physical", "ip4": "10.0.2.15", "ip6": "", "dns": "", "gateway": "10.0.2.2", "status": "ACTIVE" } ] }
