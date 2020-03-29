@@ -13,6 +13,7 @@ tests=(
     "test-settings-plugin-account"
     "test-setup"
     "test-status-service"
+    "test-network-inspection"
     )
 
 
