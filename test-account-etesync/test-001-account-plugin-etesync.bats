@@ -24,15 +24,28 @@ EOF
     [ $status -eq 0 ]
     title_found=$(echo "$output" | grep ${act_title} | wc -l)
     if [ $title_found -gt 0 ]; then
+      echo "remove old account details" >&3;
       run python3 ${HELPER_SCRIPT} "delete" "${act_title}"
       [ $status -eq 0 ]
     fi
 }
 
 @test "Create Account" {
-    run python3 ../common/account_helper.py "create" "$act"
+    run python3 ${HELPER_SCRIPT} "create" "$act"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
+}
+
+
+@test "Get Account Details" {
+    run python3 ${HELPER_SCRIPT} "get" "$act_title"
+    title_found=$(echo "$output" | grep ${act_title} | wc -l)
+    [ $title_found -gt 0 ]
+    username_found=$(echo "$output" | grep "test_scripting" | wc -l)
+    [ $username_found -gt 0 ]
+    password_found=$(echo "$output" | grep "password" | wc -l)
+    [ $password_found -gt 0 ]
+    # echo "$output" >&3;
 }
