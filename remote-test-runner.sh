@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 
-TARGET_PATH="/root/projects/integration-tests"
+REMOTE_URL=root@127.0.0.1
+REMOTE_PORT=2222
+REMOTE_PATH="/root/projects/integration-tests"
 
-## uncomment following line in case of running a fresh test
-# ssh root@127.0.0.1 -p 2222 "rm -rf $TARGET_PATH"
-ssh root@127.0.0.1 -p 2222 "mkdir -p $TARGET_PATH"
-
-rsync -av -e "ssh -p 2222" --exclude ".git" "." "root@127.0.0.1:$TARGET_PATH"
-
+ssh ${REMOTE_URL} -p ${REMOTE_PORT} "mkdir -p ${REMOTE_PATH}"
+rsync -av -e "ssh -p ${REMOTE_PORT}" --exclude ".git" "." "${REMOTE_URL}:${REMOTE_PATH}"
 echo "----------------------------------------"
-CMD="cd $TARGET_PATH;
+CMD="cd ${REMOTE_PATH};
      cd $(dirname $1);
-     chmod +x $(basename $1);
-     sh $(basename $1) $@;"
-
-ssh root@127.0.0.1 -p 2222 $CMD;
+     guix environment -m manifest.scm  -- sh $(basename $1);
+     "
+ssh ${REMOTE_URL} -p ${REMOTE_PORT} ${CMD};
