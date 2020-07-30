@@ -1,4 +1,5 @@
-
+HELPER_SCRIPT='../common/account_helper.py'
+load common
 
 act1_title="mytest"
 act2_title="mytest_modified"
@@ -33,9 +34,13 @@ account:
 EOF
 )
 
+function setup() {
+    cleanup_account "$act1_title.yaml"
+    cleanup_account "$act2_title.yaml"
+}
 
 @test "Create Account" {
-    run python3 ./account_helper.py "create" "$act1"
+    run python3 ${HELPER_SCRIPT} "create" "$act1"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
@@ -43,28 +48,20 @@ EOF
 }
 
 @test "Edit Account Title" {
-    if [ -e "$HOME/.userdata/accounts/$act1_title.yaml" ]; then
-        run rm "$HOME/.userdata/accounts/$act1_title.yaml";
-        [ "$status" -eq 0 ]
-    fi
-    if [ -e "$HOME/.userdata/accounts/$act2_title.yaml" ]; then
-        run rm "$HOME/.userdata/accounts/$act2_title.yaml";
-        [ "$status" -eq 0 ]
-    fi
 
-    run python3 ./account_helper.py "create" "$act1"
+    run python3 ${HELPER_SCRIPT} "create" "$act1"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
 
-    run python3 ./account_helper.py "edit" "$act1_title" "$act2"
+    run python3 ${HELPER_SCRIPT} "edit" "$act1_title" "$act2"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
 
-    run python3 ./account_helper.py "get" "$act2_title"
+    run python3 ${HELPER_SCRIPT} "get" "$act2_title"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
@@ -74,13 +71,13 @@ EOF
 }
 
 @test "Remove Account" {
-    run python3 ./account_helper.py "create" "$act1"
+    run python3 ${HELPER_SCRIPT} "create" "$act1"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
 
-    run python3 ./account_helper.py "delete" "$act1_title"
+    run python3 ${HELPER_SCRIPT} "delete" "$act1_title"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
@@ -88,29 +85,27 @@ EOF
 }
 
 @test "List of Accounts" {
-    run python3 ./account_helper.py "create" "$act1"
+    run python3 ${HELPER_SCRIPT} "create" "$act1"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
 
-    run python3 ./account_helper.py "list"
+    run python3 ${HELPER_SCRIPT} "list"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
 }
 
-
-
 @test "Get Account" {
-    run python3 ./account_helper.py "create" "$act1"
+    run python3 ${HELPER_SCRIPT} "create" "$act1"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
 
-    run python3 ./account_helper.py "get" "$act1_title"
+    run python3 ${HELPER_SCRIPT} "get" "$act1_title"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
@@ -119,38 +114,34 @@ EOF
     [ $title_found -gt 0 ]
 }
 
-
-
 @test "Set Status" {
-    run python3 ./account_helper.py "create" "$act1"
+    run python3 ${HELPER_SCRIPT} "create" "$act1"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
     
-    run python3 ./account_helper.py "set_status" "$act1_title" "online"
+    run python3 ${HELPER_SCRIPT} "set_status" "$act1_title" "online"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
 }
 
-
-
 @test "Get Status" {
-    run python3 ./account_helper.py "create" "$act1"
+    run python3 ${HELPER_SCRIPT} "create" "$act1"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
     
-    run python3 ./account_helper.py "set_status" "$act1_title" "online"
+    run python3 ${HELPER_SCRIPT} "set_status" "$act1_title" "online"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
 
-    run python3 ./account_helper.py "get_status" "$act1_title"
+    run python3 ${HELPER_SCRIPT} "get_status" "$act1_title"
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi

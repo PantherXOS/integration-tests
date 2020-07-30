@@ -1,13 +1,15 @@
+HELPER_SCRIPT='../common/account_helper.py'
+load common
+
+
+function setup() {
+  cleanup_account "modified_public_test.yaml"
+}
 
 @test "Rename Public Account Title" {
   # Renaming an account with public services caused error 
   # in removing protected params, which is not existed
   # ref: https://git.pantherx.org/development/applications/px-accounts-service/issues/47
-
-  if [ -e "$HOME/.userdata/accounts/modified_public_test.yaml" ]; then
-    run rm "$HOME/.userdata/accounts/modified_public_test.yaml"
-    [ "$status" -eq 0 ]
-  fi
 
   initial_title='public_test'
   initial_act=$(cat << EOF
@@ -26,13 +28,13 @@ account:
 EOF
 )
 
-  run python3 ./account_helper.py 'create' "$initial_act"
+  run python3 ${HELPER_SCRIPT} 'create' "$initial_act"
   if [ "$status" -ne 0 ]; then
     echo "$output" >&3;
   fi
   [ $status -eq 0 ]
 
-  run python3 ./account_helper.py 'get' "public_test"
+  run python3 ${HELPER_SCRIPT} 'get' "public_test"
   if [ "$status" -ne 0 ]; then
     echo "$output" >&3;
   fi
@@ -56,7 +58,7 @@ account:
 ...
 EOF
 )
-  run python3 ./account_helper.py 'edit' "$initial_title" "$modified_act"
+  run python3 ${HELPER_SCRIPT} 'edit' "$initial_title" "$modified_act"
   if [ "$status" -ne 0 ]; then
     echo "$output" >&3;
   fi
