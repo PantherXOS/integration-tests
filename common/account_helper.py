@@ -40,6 +40,7 @@ def make_rpc_account(actObj):
             i += 1
     return rpc_act
 
+
 def _create_client(path):
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     sock.connect(path)
@@ -80,12 +81,13 @@ def rpc_account_get(title):
     request = client.get_request()
     request.title = title
     response = request.send().wait()
-    return response.account  
+    return response.account
 
 
 def rpc_account_list(provider_filters=None, service_filters=None):
     client = _create_client(account_path)
-    # list    @0 (providerFilter: List(Text), serviceFilter: List(Text)) -> (accounts: List(Text));
+    # list    @0 (providerFilter: List(Text), serviceFilter: List(Text))
+    #             -> (accounts: List(Text));
     request = client.list_request()
     if provider_filters is not None:
         request.providerFilter = provider_filters
@@ -194,10 +196,9 @@ if __name__ == "__main__":
             status = rpc_account_get_status(title)
             print(status)
             ret = True
-        
+
         else:
             print('Invalid command: ', cmd)
-    
+
     if not ret:
         exit(1)
-
