@@ -44,13 +44,7 @@ elif [ "$1" = "wrong_path_plugin" ]; then
 elif [ "$1" = "check_rpc_connection" ]; then
 	px-hub-service > logs/check_rpc_connection-settings.log 2>&1 &
 	sleep 2
-	px-hub-service-test getModules
-	result=$?
-elif [ "$1" = "get_registered_plugin" ]; then
-	cp _plugins/valid_plugins.yaml plugins/
-	px-hub-service > logs/get_registered_plugin-hub.log 2>&1 &
-	sleep 2
-	px-hub-service-test getModules | grep cpp-test
+	px-hub-service-cli get_accounts
 	result=$?
 fi
 rm plugins -rf
