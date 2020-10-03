@@ -1,0 +1,5 @@
+plugin:
+  name: px-hub-service-plugin-invalid
+  version: 0.0.1
+  type: python
+  path: ../../px-hub-service-plugin-invalid

@@ -1,0 +1,5 @@
+plugin:
+  name: px-hub-service-plugin-cpp-test
+  version: 0.0.1
+  type: cpp
+  path: _plugins/libpx-hub-service-plugin-cpp-test.so
