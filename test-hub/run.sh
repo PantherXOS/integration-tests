@@ -7,7 +7,6 @@ cp plugin-cpp-test-sampl-struct.yaml ~/.userdata/hub/
 
 px-accounts-service -d &> logs/accounts.log &
 px-events-service -d &> logs/events.log &
-px-hub-service d &> logs/hub.log &
 sleep 2s
 
 bats .
