@@ -1,8 +1,7 @@
-HELPER_SCRIPT='../common/account_helper.py'
-
 act_title="gitlab_test"
 act_host='https://git.pantherx.org'
-act_username='r.majd'
+act_username='f.sajadi'
+
 act=$(cat << EOF
 ---
 account:
@@ -14,38 +13,41 @@ account:
   services:
     - gitlab:
         host: ${act_host}
-        token: '123'
+        token: 'PLEASE_ENTER_VALID_TOKEN'
         username: ${act_username}
 ...
 EOF
 )
 
-
-@test "Cleanup Old Account" {
-    run python3 ${HELPER_SCRIPT} "list"
-    [ $status -eq 0 ]
-    title_found=$(echo "$output" | grep ${act_title} | wc -l)
-    if [ $title_found -gt 0 ]; then
-      run python3 ${HELPER_SCRIPT} "delete" "${act_title}"
-      [ $status -eq 0 ]
-    fi
-}
-
 @test "Create Account" {
-    run python3 ${HELPER_SCRIPT} "create" "$act"
+    echo "$act" > account.yaml
+    run px-accounts-cli -o create -f account.yaml
     if [ "$status" -ne 0 ]; then
         echo "$output" >&3;
     fi
     [ $status -eq 0 ]
 }
 
-
 @test "Get Account Details" {
-    run python3 ${HELPER_SCRIPT} "get" "$act_title"
-    title_found=$(echo "$output" | grep ${act_title} | wc -l)
-    [ $title_found -gt 0 ]
+    run px-accounts-cli -o "list"
+    account_id=$(echo "$output" | grep $act_title | cut -f 2 -d "(" | cut -f 1 -d"," | cut -f 2 -d "'")
+    run px-accounts-cli -o get -i "${account_id}"
+    if [ "$status" -ne 0 ]; then
+        echo "$output" >&3;
+    fi
+    [ $status -eq 0 ]
     host_found=$(echo "$output" | grep ${act_host} | wc -l)
     [ $host_found -gt 0 ]
     username_found=$(echo "$output" | grep ${act_username} | wc -l)
     [ $username_found -gt 0 ]
+}
+ 
+@test "Delete Account" {
+    run px-accounts-cli -o "list"
+    account_id=$(echo "$output" | grep $act_title | cut -f 2 -d "(" | cut -f 1 -d"," | cut -f 2 -d "'")
+    run px-accounts-cli -o remove -i "${account_id}"
+    if [ "$status" -ne 0 ]; then
+        echo "$output" >&3;
+    fi
+    [ $status -eq 0 ]
 }
