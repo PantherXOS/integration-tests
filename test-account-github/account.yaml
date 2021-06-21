@@ -1,0 +1,12 @@
+---
+account:
+  title: "github_test"
+  provider: ""
+  active: true
+  settings:
+    interval: '5000'
+  services:
+    - github:
+        username: en.fakhri@gmail.com
+        access_token: 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
+...
