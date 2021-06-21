@@ -1,0 +1,15 @@
+---
+account:
+  title: "imap_test"
+  provider: ""
+  active: true
+  settings:
+    interval: '5000'
+  services:
+    - imap:
+        host: imap.fastmail.com
+        password: 'g4lgvpnxb6285y2h'
+        username: f.sajadi@pantherx.org
+        port: 993
+        use_ssl: True
+...

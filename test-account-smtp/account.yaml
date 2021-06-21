@@ -1,0 +1,15 @@
+---
+account:
+  title: "smtp_test"
+  provider: ""
+  active: true
+  settings:
+    interval: '5000'
+  services:
+    - imap:
+        host: smtp.fastmail.com
+        password: 'gelgla64gnjx5rng'
+        username: f.sajadi@pantherx.org
+        port: 465
+        use_ssl: True
+...
