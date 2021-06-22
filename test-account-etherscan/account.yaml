@@ -1,0 +1,12 @@
+---
+account:
+  title: "etherscan_test"
+  provider: ""
+  active: true
+  settings:
+    interval: '5000'
+  services:
+    - etherscan:
+        api_key: 'XX5MNWS29934MRF2PKYIQN9Q63QHHWDFAV'
+        username: "FakhriSajadi"
+...
