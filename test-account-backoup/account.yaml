@@ -1,0 +1,16 @@
+---
+account:
+  title: "s3_test"
+  provider: 's3_wasabi'
+  active: true
+  settings:
+    interval: '5000'
+  services:
+    - s3:
+        access_key_id: "IHR8RDGJWCG0JA9255OZ"
+        secret_access_key: 'nBqczjAkbzcY7iE2twUGdgSzg7Z84KrVFXIgofJa'
+        bucket: "backup-internal-16ead9fd-1f3d-44dc-b7a7-e34b2607cab5"
+        region: "eu-central-1"
+        path: ""
+        password: 'Y86B7D9BcjgwxzoJQnRSPDMvevZxSfTn794m'
+...
