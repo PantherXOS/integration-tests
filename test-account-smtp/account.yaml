@@ -6,10 +6,10 @@ account:
   settings:
     interval: '5000'
   services:
-    - imap:
-        host: smtp.fastmail.com
-        password: 'gelgla64gnjx5rng'
-        username: f.sajadi@pantherx.org
-        port: 465
-        use_ssl: True
+    - smtp:
+        host: "smtp.fastmail.com"
+        password: 'lrgekzz5x92rxvpd'
+        username: "f.sajadi@pantherx.org"
+        port: "465"
+        use_ssl: "True"
 ...
